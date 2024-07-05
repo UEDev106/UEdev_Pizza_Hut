@@ -1,0 +1,113 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .input {
+    @apply rounded-full border border-stone-200 duration-300 placeholder:text-stone-400 focus:ring focus:outline-none focus:ring-yellow-400 text-sm py-2 px-3 transition-all md:py-2 px-3;
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+  }
+
+  .input:hover {
+    @apply border-yellow-400;
+    transform: scale(1.05);
+  }
+
+  .input:focus {
+    @apply shadow-lg;
+    box-shadow: 0 0 15px rgba(255, 204, 0, 0.7);
+  }
+
+  .button {
+    @apply bg-yellow-400 text-white font-bold py-2 px-4 rounded-full transition-all duration-300 ease-in-out;
+  }
+
+  .button:hover {
+    @apply bg-yellow-500;
+    transform: scale(1.05);
+    box-shadow: 0 4px 15px rgba(255, 204, 0, 0.7);
+  }
+
+  .button:active {
+    @apply bg-yellow-600;
+    transform: scale(0.95);
+  }
+
+  .cart {
+    @apply relative bg-white p-4 rounded-lg shadow-lg transition-transform transform duration-500 ease-in-out;
+  }
+
+  .cart:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  }
+
+  .loader {
+    width: 45px;
+    aspect-ratio: 0.75;
+    --c: no-repeat linear-gradient(var(--tw-color-stone-800) 0 0);
+    background: var(--c) 0% 50%, var(--c) 50% 50%, var(--c) 100% 50%;
+    background-size: 20% 50%;
+    animation: loading 1s infinite linear, bounce 1s infinite ease-in-out;
+  }
+
+  @keyframes loading {
+    20% {
+      background-position: 0% 0%, 50% 50%, 100% 50%;
+    }
+    40% {
+      background-position: 0% 100%, 50% 0%, 100% 50%;
+    }
+    60% {
+      background-position: 0% 50%, 50% 100%, 100% 0%;
+    }
+    80% {
+      background-position: 0% 50%, 50% 50%, 100% 100%;
+    }
+  }
+
+  @keyframes bounce {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+
+  .toast {
+    @apply fixed bottom-4 right-4 bg-yellow-500 text-white py-2 px-4 rounded-lg shadow-lg opacity-0 transition-opacity duration-300 ease-in-out;
+  }
+
+  .toast.show {
+    @apply opacity-100;
+  }
+}
+
+@layer utilities {
+  .fade-in {
+    animation: fadeIn 1s ease-in-out;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  .rotate {
+    animation: rotate 1s infinite linear;
+  }
+
+  @keyframes rotate {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+}
